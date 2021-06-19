@@ -73,7 +73,11 @@
   @extend .key;
   grid-column: span 4;
 }
-
+.activeCapsLock {
+  @extend .capslock;
+  background-color: black;
+  color:white;
+}
 .return {
   @extend .key;
   grid-column: span 4;

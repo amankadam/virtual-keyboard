@@ -1,3 +1,4 @@
+import { SPECIAL_KEYS } from '../constants';
 import styles from '../styles/Home.module.scss';
 import FirstRow from './firstRow';
 import LastRow from './lastRow';
@@ -5,18 +6,20 @@ import LastRow from './lastRow';
 interface IQwerty {
   onKeyPressed(e: any): void;
   alphabets: Array<string>;
+  capsLock: boolean;
 }
 
 export function QwertyKeyboard({
   onKeyPressed,
   alphabets,
+  capsLock,
 }: IQwerty): JSX.Element {
   const allKeys: Array<HTMLElement> = [];
   const renderKeyboard = () => {
     for (const i in alphabets) {
       allKeys.push(
         <div key={alphabets[i]} className={styles.key} onClick={onKeyPressed}>
-          {alphabets[i]}
+          {capsLock ? alphabets[i].toLocaleUpperCase() : alphabets[i]}
         </div>,
       );
       if (parseInt(i) == 9) {
@@ -31,11 +34,11 @@ export function QwertyKeyboard({
             \
           </div>,
           <div
-            key="CapsLock"
-            className={styles.capslock}
+            key={SPECIAL_KEYS.CapsLock}
+            className={capsLock ? styles.activeCapsLock : styles.capslock}
             onClick={onKeyPressed}
           >
-            CapsLock
+            {SPECIAL_KEYS.CapsLock}
           </div>,
         );
       } else if (parseInt(i) == 18) {
@@ -46,11 +49,11 @@ export function QwertyKeyboard({
           <div key="'" className={styles.key} onClick={onKeyPressed}>
             '
           </div>,
-          <div key="Return" className={styles.return}>
-            Return
+          <div key={SPECIAL_KEYS.RETURN} className={styles.return}>
+            {SPECIAL_KEYS.RETURN}
           </div>,
-          <div key="LShift" className={styles.leftshift}>
-            Shift
+          <div key={SPECIAL_KEYS.LSHIFT} className={styles.leftshift}>
+            {SPECIAL_KEYS.LSHIFT}
           </div>,
         );
       } else if (parseInt(i) == 25) {
@@ -64,11 +67,11 @@ export function QwertyKeyboard({
           <div key="/" className={styles.key} onClick={onKeyPressed}>
             /
           </div>,
-          <div key="RShift" className={styles.rightshift}>
-            Shift
+          <div key={SPECIAL_KEYS.RSHIFT} className={styles.rightshift}>
+            {SPECIAL_KEYS.RSHIFT}
           </div>,
-          <div key="Ctrl" className={styles.leftctrl}>
-            Ctrl
+          <div key={SPECIAL_KEYS.CONTROL} className={styles.leftctrl}>
+            {SPECIAL_KEYS.CONTROL}
           </div>,
         );
       }

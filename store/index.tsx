@@ -1,7 +1,7 @@
 import { configureStore, ThunkAction } from '@reduxjs/toolkit';
 import { Action, Store } from 'redux';
 import { createWrapper } from 'next-redux-wrapper';
-import keyBoardSlice from './test';
+import keyBoardSlice from './keyboard';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
 export const makeStore = (): Store =>

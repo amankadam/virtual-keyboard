@@ -2,12 +2,13 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.scss';
 import { QwertyKeyboard } from '../components';
 import { useAppDispatch, useAppSelector } from '../store';
-import keyBoardSlice from '../store/test';
+import keyBoardSlice from '../store/keyboard';
 import { useState } from 'react';
-import { alphabets } from '../constants';
+import { alphabets, SPECIAL_KEYS } from '../constants';
 
 export default function Home(): JSX.Element {
   const inputValue = useAppSelector((state) => state.keyboard.inputValue);
+  const capsLock = useAppSelector(({ keyboard }) => keyboard.capsLock);
   const dispatch = useAppDispatch();
   const [allkeys, setAllKeys] = useState(alphabets);
   function handlerChange(event: any) {
@@ -22,12 +23,17 @@ export default function Home(): JSX.Element {
       key.charCodeAt(0) >= 97 &&
       key.charCodeAt(0) <= 122
     ) {
-      const temp = alphabets.sort(() => Math.random() - 0.5);
+      const temp = [...alphabets];
+      temp.sort(() => Math.random() - 0.5);
       setAllKeys(temp);
     } else {
       setAllKeys(alphabets);
     }
-    dispatch(keyBoardSlice.actions.setValue(e.target.textContent));
+    if (key == SPECIAL_KEYS.CapsLock) {
+      dispatch(keyBoardSlice.actions.setCapsLock());
+    }
+    if (key.length == 1)
+      dispatch(keyBoardSlice.actions.setValue(e.target.textContent));
   };
   return (
     <div className={styles.container}>
@@ -41,7 +47,11 @@ export default function Home(): JSX.Element {
         value={inputValue}
       ></textarea>
       <div className={styles.keyboard}>
-        <QwertyKeyboard onKeyPressed={onKeyPressed} alphabets={allkeys} />
+        <QwertyKeyboard
+          onKeyPressed={onKeyPressed}
+          alphabets={allkeys}
+          capsLock={capsLock}
+        />
       </div>
       {/* <div className={styles.keyboard}>{renderAlphabets()}</div> */}
       {/* <main className={styles.main}>

@@ -26,3 +26,13 @@ export const alphabets = [
   'n',
   'm',
 ];
+
+export enum SPECIAL_KEYS {
+  LSHIFT = 'LShift',
+  RSHIFT = 'RShift',
+  SPACE = 'Space',
+  CapsLock = 'CapsLock',
+  BACKSPACE = 'Backspace',
+  RETURN = 'Return',
+  CONTROL = 'Ctrl',
+}
