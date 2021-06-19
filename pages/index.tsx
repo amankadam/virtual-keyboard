@@ -32,6 +32,10 @@ export default function Home(): JSX.Element {
     if (key == SPECIAL_KEYS.CapsLock) {
       dispatch(keyBoardSlice.actions.setCapsLock());
     }
+    if (key == SPECIAL_KEYS.BACKSPACE) {
+      dispatch(keyBoardSlice.actions.handleBackspaceKey());
+    }
+
     if (key.length == 1)
       dispatch(keyBoardSlice.actions.setValue(e.target.textContent));
   };

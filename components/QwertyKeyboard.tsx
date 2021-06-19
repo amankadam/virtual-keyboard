@@ -80,7 +80,7 @@ export function QwertyKeyboard({
   };
   return (
     <>
-      <FirstRow />
+      <FirstRow onKeyPressed={onKeyPressed} />
       {renderKeyboard()}
       <LastRow />
     </>

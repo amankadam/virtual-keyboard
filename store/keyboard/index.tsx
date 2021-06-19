@@ -20,6 +20,9 @@ const keyBoardSlice = createSlice({
     setCapsLock(state) {
       state.capsLock = !state.capsLock;
     },
+    handleBackspaceKey(state) {
+      state.inputValue = state.inputValue.slice(0, -1);
+    },
   },
 });
 export default keyBoardSlice;
