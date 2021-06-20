@@ -35,10 +35,14 @@ const keyBoardSlice = createSlice({
     },
     handleBackspaceKey(state) {
       const { selectedTextStart, selectedTextEnd, inputValue } = state;
-      state.inputValue =
-        inputValue.slice(0, selectedTextStart) +
-        inputValue.slice(selectedTextEnd, inputValue.length);
-      keyBoardSlice.caseReducers.setShift(state);
+      if (selectedTextStart == selectedTextEnd) {
+        state.inputValue = inputValue.slice(0, -1);
+      } else {
+        state.inputValue =
+          inputValue.slice(0, selectedTextStart) +
+          inputValue.slice(selectedTextEnd, inputValue.length);
+        keyBoardSlice.caseReducers.setShift(state);
+      }
     },
     handleSpaceKey(state) {
       state.inputValue += ' ';
