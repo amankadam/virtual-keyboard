@@ -18,7 +18,7 @@ export function QwertyKeyboard({
   LShift,
   RShift,
 }: IQwerty): JSX.Element {
-  const allKeys: Array<HTMLElement> = [];
+  const allKeys: Array<any> = [];
   const renderKeyboard = () => {
     for (const i in alphabets) {
       allKeys.push(
