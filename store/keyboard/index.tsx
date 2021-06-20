@@ -41,6 +41,8 @@ const keyBoardSlice = createSlice({
         state.inputValue =
           inputValue.slice(0, selectedTextStart) +
           inputValue.slice(selectedTextEnd, inputValue.length);
+        state.selectedTextStart = state.inputValue.length;
+        state.selectedTextEnd = state.inputValue.length;
         keyBoardSlice.caseReducers.setShift(state);
       }
     },
