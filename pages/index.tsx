@@ -3,7 +3,7 @@ import styles from '../styles/Home.module.scss';
 import { QwertyKeyboard } from '../components';
 import { useAppDispatch, useAppSelector } from '../store';
 import keyBoardSlice from '../store/keyboard';
-import { useState } from 'react';
+import { Ref, useRef, useState } from 'react';
 import { alphabets, SPECIAL_KEYS } from '../constants';
 
 export default function Home(): JSX.Element {
@@ -17,15 +17,14 @@ export default function Home(): JSX.Element {
     handleShiftKey,
     handleSpaceKey,
     setValue,
+    setValueForHandlerChange,
     setCapsLock,
   } = keyBoardSlice.actions;
 
   const dispatch = useAppDispatch();
   const [allkeys, setAllKeys] = useState(alphabets);
   function handlerChange(event: any) {
-    dispatch(
-      keyBoardSlice.actions.setValueForHandlerChange(event.target.value),
-    );
+    dispatch(setValueForHandlerChange(event.target.value));
   }
   const resetShift = () => {
     if (LShift || RShift) {
@@ -99,7 +98,9 @@ export default function Home(): JSX.Element {
     } else if (key.length == 2) {
       dispatch(setValue(LShift || RShift ? key[1] : key[0]));
     }
+    ref.current.focus();
   };
+  const ref: any = useRef('');
   return (
     <div className={styles.container}>
       <Head>
@@ -107,6 +108,7 @@ export default function Home(): JSX.Element {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <textarea
+        ref={ref}
         className={styles.text}
         onChange={handlerChange}
         value={inputValue}
