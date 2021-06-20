@@ -133,9 +133,8 @@ export default function Home(): JSX.Element {
         onChange={handlerChange}
         value={inputValue}
       ></textarea>
-      <div className={styles.keyboard}>
+      <div className={styles.keyboard} onClick={onKeyPressed}>
         <QwertyKeyboard
-          onKeyPressed={onKeyPressed}
           alphabets={allkeys}
           capsLock={capsLock}
           LShift={LShift}
