@@ -7,12 +7,16 @@ interface IQwerty {
   onKeyPressed(e: any): void;
   alphabets: Array<string>;
   capsLock: boolean;
+  LShift: boolean;
+  RShift: boolean;
 }
 
 export function QwertyKeyboard({
   onKeyPressed,
   alphabets,
   capsLock,
+  LShift,
+  RShift,
 }: IQwerty): JSX.Element {
   const allKeys: Array<HTMLElement> = [];
   const renderKeyboard = () => {
@@ -49,10 +53,18 @@ export function QwertyKeyboard({
           <div key="'" className={styles.key} onClick={onKeyPressed}>
             '
           </div>,
-          <div key={SPECIAL_KEYS.RETURN} className={styles.return}>
+          <div
+            key={SPECIAL_KEYS.RETURN}
+            className={styles.return}
+            onClick={onKeyPressed}
+          >
             {SPECIAL_KEYS.RETURN}
           </div>,
-          <div key={SPECIAL_KEYS.LSHIFT} className={styles.leftshift}>
+          <div
+            key={SPECIAL_KEYS.LSHIFT}
+            onClick={onKeyPressed}
+            className={LShift ? styles.activeLeftShift : styles.leftshift}
+          >
             {SPECIAL_KEYS.LSHIFT}
           </div>,
         );
@@ -67,11 +79,12 @@ export function QwertyKeyboard({
           <div key="/" className={styles.key} onClick={onKeyPressed}>
             /
           </div>,
-          <div key={SPECIAL_KEYS.RSHIFT} className={styles.rightshift}>
+          <div
+            key={SPECIAL_KEYS.RSHIFT}
+            className={RShift ? styles.activeRightShift : styles.rightshift}
+            onClick={onKeyPressed}
+          >
             {SPECIAL_KEYS.RSHIFT}
-          </div>,
-          <div key={SPECIAL_KEYS.CONTROL} className={styles.leftctrl}>
-            {SPECIAL_KEYS.CONTROL}
           </div>,
         );
       }
@@ -82,7 +95,7 @@ export function QwertyKeyboard({
     <>
       <FirstRow onKeyPressed={onKeyPressed} />
       {renderKeyboard()}
-      <LastRow />
+      <LastRow onKeyPressed={onKeyPressed} />
     </>
   );
 }

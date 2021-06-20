@@ -35,4 +35,5 @@ export enum SPECIAL_KEYS {
   BACKSPACE = 'Backspace',
   RETURN = 'Return',
   CONTROL = 'Ctrl',
+  TAB = 'Tab',
 }
