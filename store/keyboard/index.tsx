@@ -43,8 +43,8 @@ const keyBoardSlice = createSlice({
           inputValue.slice(selectedTextEnd, inputValue.length);
         state.selectedTextStart = state.inputValue.length;
         state.selectedTextEnd = state.inputValue.length;
-        keyBoardSlice.caseReducers.setShift(state);
       }
+      keyBoardSlice.caseReducers.setShift(state);
     },
     handleSpaceKey(state) {
       state.inputValue += ' ';
