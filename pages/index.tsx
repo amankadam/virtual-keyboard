@@ -44,7 +44,6 @@ export default function Home(): JSX.Element {
       key.charCodeAt(0) >= 97 &&
       key.charCodeAt(0) <= 122
     ) {
-      console.log(key);
       const temp = [...alphabets];
       temp.sort(() => Math.random() - 0.5);
       setAllKeys(temp);
@@ -100,7 +99,6 @@ export default function Home(): JSX.Element {
     } else if (key.length == 2) {
       dispatch(setValue(LShift || RShift ? key[1] : key[0]));
     }
-    console.log(capsLock);
   };
   return (
     <div className={styles.container}>
