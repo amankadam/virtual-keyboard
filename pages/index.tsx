@@ -90,12 +90,9 @@ export default function Home(): JSX.Element {
     }
     if (key.length == 1) {
       dispatch(setValue(e.target.textContent));
-      if (LShift || RShift) {
-        let temp = [...allkeys];
-        temp = temp.map((t) => t.toLocaleLowerCase());
-        setAllKeys(temp);
-      }
+      resetShift();
     } else if (key.length == 2) {
+      resetShift();
       dispatch(setValue(LShift || RShift ? key[1] : key[0]));
     }
     ref.current.focus();
@@ -105,6 +102,10 @@ export default function Home(): JSX.Element {
     <div className={styles.container}>
       <Head>
         <title>Virtual Keyboard</title>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1"
+        ></meta>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <textarea

@@ -13,6 +13,8 @@
   align-items: center;
 }
 .text {
+  width: 80%;
+  margin: auto;
   margin-top: 5%;
   border-radius: 5px;
   border: 2px solid black;
@@ -21,6 +23,7 @@
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 .keyboard {
+  margin: auto;
   padding: 20px;
   border-radius: 10px;
   display: grid;
@@ -142,7 +145,7 @@
     font-size: 7px;
   }
 }
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 360px) {
   .keyboard {
     grid-template-columns: repeat(30, 8px);
     grid-template-rows: repeat(5, 30px);
