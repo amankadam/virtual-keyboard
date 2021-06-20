@@ -3,7 +3,7 @@ import styles from '../styles/Home.module.scss';
 import { QwertyKeyboard } from '../components';
 import { useAppDispatch, useAppSelector } from '../store';
 import keyBoardSlice from '../store/keyboard';
-import { Ref, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { alphabets, SPECIAL_KEYS } from '../constants';
 
 export default function Home(): JSX.Element {
@@ -19,10 +19,29 @@ export default function Home(): JSX.Element {
     setValue,
     setValueForHandlerChange,
     setCapsLock,
+    setSelectedRange,
   } = keyBoardSlice.actions;
 
   const dispatch = useAppDispatch();
   const [allkeys, setAllKeys] = useState(alphabets);
+  useEffect(() => {
+    const tex = document.querySelector('textarea');
+    const selectedElement = (e: any) => {
+      const start = e.selectionStart;
+      const end = e.selectionEnd;
+      dispatch(setSelectedRange({ start, end }));
+    };
+
+    tex?.addEventListener('mouseup', function () {
+      selectedElement(tex);
+    });
+    tex?.addEventListener('keyup', function (event: any) {
+      if (event.keyCode == 16 || event.keyCode == 17 || event.metaKey) {
+        selectedElement(tex);
+      }
+    });
+  }, []);
+
   function handlerChange(event: any) {
     dispatch(setValueForHandlerChange(event.target.value));
   }

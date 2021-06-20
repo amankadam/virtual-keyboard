@@ -7,6 +7,8 @@ const keyBoardSlice = createSlice({
     capsLock: false,
     LShift: false,
     RShift: false,
+    selectedTextStart: 0,
+    selectedTextEnd: 0,
   } as any,
   reducers: {
     setShift(state) {
@@ -14,6 +16,10 @@ const keyBoardSlice = createSlice({
         state.LShift = false;
         state.RShift = false;
       }
+    },
+    setSelectedRange(state, { payload }) {
+      state.selectedTextStart = payload.start;
+      state.selectedTextEnd = payload.end;
     },
     setValue(state, action) {
       state.inputValue += action.payload;
@@ -28,7 +34,10 @@ const keyBoardSlice = createSlice({
       state.capsLock = !state.capsLock;
     },
     handleBackspaceKey(state) {
-      state.inputValue = state.inputValue.slice(0, -1);
+      const { selectedTextStart, selectedTextEnd, inputValue } = state;
+      state.inputValue =
+        inputValue.slice(0, selectedTextStart) +
+        inputValue.slice(selectedTextEnd, inputValue.length);
       keyBoardSlice.caseReducers.setShift(state);
     },
     handleSpaceKey(state) {
