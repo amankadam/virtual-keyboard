@@ -1,12 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { createSlice } from '@reduxjs/toolkit';
-import { SPECIAL_KEYS } from '../../constants';
-// interface Ikey {
-//   inputValue: string;
-//   capsLock: boolean;
-//   LShift: boolean;
-//   RShift: boolean;
-// }
 const keyBoardSlice = createSlice({
   name: 'keyboard',
   initialState: {
