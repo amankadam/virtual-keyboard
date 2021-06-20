@@ -81,7 +81,7 @@ export function QwertyKeyboard({
             <span>.</span>
           </div>,
           <div key="/" className={styles.keyNum} onClick={onKeyPressed}>
-            ? <span>/</span>
+            ?<span>/</span>
           </div>,
           <div
             key={SPECIAL_KEYS.RSHIFT}
