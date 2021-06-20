@@ -25,9 +25,9 @@
   grid-template-columns: repeat(30, 30px);
   grid-template-rows: repeat(5, 60px);
   grid-gap: 5px;
+  align-content: center;
 }
 .key {
-  padding-top: 1.5%;
   background-color: wheat;
   font-size: 20px;
   font-weight: 400;
@@ -133,12 +133,19 @@
   .keyNum {
     font-size: 7px;
   }
+  .text {
+    font-size: 16px;
+  }
 }
 @media screen and (max-width: 360px) {
   .keyboard {
     grid-template-columns: repeat(30, 9px);
     grid-template-rows: repeat(5, 20px);
     grid-gap: 1px;
+  }
+
+  .text {
+    font-size: 12px;
   }
   .key {
     font-size: 8px;
@@ -149,7 +156,7 @@
   .delete {
     font-size: 7px;
   }
-  .capslock{
+  .capslock {
     font-size: 7px;
   }
 }
@@ -158,6 +165,9 @@
     grid-template-columns: repeat(30, 7px);
     grid-template-rows: repeat(5, 20px);
     grid-gap: 1px;
+  }
+  .text {
+    font-size: 12px;
   }
   .key {
     font-size: 7px;
@@ -168,7 +178,7 @@
   .delete {
     font-size: 5px;
   }
-  .capslock{
+  .capslock {
     font-size: 5px;
   }
 }
