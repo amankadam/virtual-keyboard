@@ -28,14 +28,16 @@ export function QwertyKeyboard({
       );
       if (parseInt(i) == 9) {
         allKeys.push(
-          <div key="[" className={styles.key} onClick={onKeyPressed}>
-            [
+          <div key="[" className={styles.keyNum} onClick={onKeyPressed}>
+            {'{'}
+            <span>[</span>
           </div>,
-          <div key="]" className={styles.key} onClick={onKeyPressed}>
-            ]
+          <div key="]" className={styles.keyNum} onClick={onKeyPressed}>
+            {'}'}
+            <span>]</span>
           </div>,
           <div key="\\" className={styles.backslash} onClick={onKeyPressed}>
-            \
+            |<span>\</span>
           </div>,
           <div
             key={SPECIAL_KEYS.CapsLock}
@@ -47,11 +49,11 @@ export function QwertyKeyboard({
         );
       } else if (parseInt(i) == 18) {
         allKeys.push(
-          <div key=";" className={styles.key} onClick={onKeyPressed}>
-            ;
+          <div key=";" className={styles.keyNum} onClick={onKeyPressed}>
+            :<span>;</span>
           </div>,
-          <div key="'" className={styles.key} onClick={onKeyPressed}>
-            '
+          <div key="'" className={styles.keyNum} onClick={onKeyPressed}>
+            "<span>,</span>
           </div>,
           <div
             key={SPECIAL_KEYS.RETURN}
@@ -70,14 +72,16 @@ export function QwertyKeyboard({
         );
       } else if (parseInt(i) == 25) {
         allKeys.push(
-          <div key="," className={styles.key} onClick={onKeyPressed}>
-            ,
+          <div key="," className={styles.keyNum} onClick={onKeyPressed}>
+            {'<'}
+            <span>,</span>
           </div>,
-          <div key="." className={styles.key} onClick={onKeyPressed}>
-            .
+          <div key="." className={styles.keyNum} onClick={onKeyPressed}>
+            {'>'}
+            <span>.</span>
           </div>,
-          <div key="/" className={styles.key} onClick={onKeyPressed}>
-            /
+          <div key="/" className={styles.keyNum} onClick={onKeyPressed}>
+            ? <span>/</span>
           </div>,
           <div
             key={SPECIAL_KEYS.RSHIFT}

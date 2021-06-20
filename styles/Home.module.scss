@@ -51,6 +51,7 @@
   border-radius: 5px;
   grid-column: span 2;
   text-align: center;
+  grid-gap: 0.5px;
 }
 .delete {
   @extend .key;
@@ -63,7 +64,7 @@
 }
 
 .backslash {
-  @extend .key;
+  @extend .keyNum;
   grid-column: span 3;
 }
 
