@@ -25,17 +25,21 @@
   grid-template-columns: repeat(30, 30px);
   grid-template-rows: repeat(5, 60px);
   grid-gap: 5px;
-  align-content: center;
 }
 .key {
   background-color: wheat;
   font-size: 20px;
+  width: 100%;
+  height: 100%;
   font-weight: 400;
   color: black;
   border: 2px solid black;
   border-radius: 5px;
   grid-column: span 2;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .key:hover {
   cursor: pointer;
